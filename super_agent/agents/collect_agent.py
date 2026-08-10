@@ -76,21 +76,21 @@ class InfoCollectAgent(Agent):
             return "subdomain"
         if "用户名" in c or "username" in c or "找人" in c:
             return "username"
-        if any(kw in c for kw in ["搜索", "搜 ", "搜一个", "搜一下", "查一下", "找一下", "search"]):
-            return "search"
-        if any(kw in c for kw in ["访问", "打开", "fetch", "http", "网页"]):
-            return "fetch"
         if "rss" in c or "订阅" in c:
             return "rss"
         if "新闻" in c or "news" in c:
             return "news"
+        if any(kw in c for kw in ["搜索", "搜 ", "搜一个", "搜一下", "查一下", "找一下", "search"]):
+            return "search"
+        if any(kw in c for kw in ["访问", "打开", "fetch", "http", "网页"]):
+            return "fetch"
         if "视频" in c or "video" in c or "youtube" in c or "b站" in c:
             return "video"
         if any(kw in c for kw in ["分析", "归类", "classify", "分类"]):
             return "analyze"
         if any(kw in c for kw in ["定时", "监控", "每", "每天", "schedule", "cron"]):
             return "schedule"
-        if any(kw in c for kw in ["保存", "存储", "导出", "检索", "search", "查询历史"]):
+        if any(kw in c for kw in ["保存", "存储", "导出", "检索", "查询历史", "搜索数据库", "stats", "统计"]):
             return "storage"
         return "comprehensive"
 
@@ -265,7 +265,7 @@ class InfoCollectAgent(Agent):
 
     def _handle_schedule(self, content: str) -> str:
         """处理定时监控"""
-        return "⏰ 定时监控能力\n\n需指定: 采集任务 + 间隔分钟\n示例: '每30分钟监控这个网站'"
+        return "⏰ 定时监控能力\n\n需指定: 采集任务 + 间隔分钟\n示例: '每30分钟监控这个网站'\n\n可用功能: 定时触发 / 变更检测 / 控制台通知"
 
     def _handle_storage(self, content: str) -> str:
         """处理存储检索"""

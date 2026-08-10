@@ -118,8 +118,8 @@ class SearchDiscovery:
             import json as j
             if tool == "subfinder":
                 result = subprocess.run(
-                    ["subfinder", "-d", domain, "-silent"],
-                    capture_output=True, text=True, timeout=60
+                    ["subfinder", "-d", domain, "-silent", "-timeout", "5"],
+                    capture_output=True, text=True, timeout=30
                 )
                 if result.returncode == 0:
                     return [s.strip() for s in result.stdout.split("\n") if s.strip()]
@@ -156,17 +156,31 @@ class SearchDiscovery:
     # ─── 用户名搜索 ───
 
     def username_search(self, username: str) -> list:
-        """按用户名搜索社交账号（对接 sherlock 逻辑）"""
+        """按用户名搜索社交账号（对接 sherlock）"""
+        exec_paths = [
+            "/tmp/sherlock_venv/bin/python3",  # Python 3.11 环境
+            "/tmp/sherlock_venv/bin/sherlock",
+            "sherlock",
+        ]
+        import subprocess
+        # 优先用 python3.11 venv 里的 sherlock
+        cmd = None
+        for p in exec_paths:
+            if cmd is None and p.endswith(".py") or "python3" in p:
+                cmd = [p, "-m", "sherlock_project.sherlock"]
+                break
         try:
-            import subprocess
             result = subprocess.run(
-                ["sherlock", username, "--output", "/dev/null"],
-                capture_output=True, text=True, timeout=120
+                ["/tmp/sherlock_venv/bin/python3", "-m", "sherlock_project.sherlock",
+                 username, "--timeout", "10", "--no-color"],
+                capture_output=True, text=True, timeout=90
             )
             lines = result.stdout.split("\n")
-            found = [l for l in lines if "[+]" in l]
-            return found if found else ["sherlock 未找到或需安装"]
+            found = [l.strip() for l in lines if l.strip().startswith("[+]")]
+            if found:
+                return found
+            return ["sherlock 未找到该用户名，或目标站点无响应"]
         except FileNotFoundError:
-            return ["需要安装 sherlock: pip install sherlock-project"]
+            return ["需要安装 sherlock (Python 3.11): uv venv /tmp/sherlock_venv --python 3.11 && pip install sherlock-project"]
         except Exception as e:
             return [f"用户名搜索失败: {e}"]
