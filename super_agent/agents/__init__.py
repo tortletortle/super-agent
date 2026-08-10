@@ -6,6 +6,7 @@ from .creative_agent import CreativeAgent
 from .data_agent import DataAgent
 from .game_agent import GameAgent
 from .system_agent import SystemAgent
+from .collect_agent import InfoCollectAgent
 
 ALL_AGENTS = [
     CodeAgent,
@@ -15,10 +16,12 @@ ALL_AGENTS = [
     DataAgent,
     GameAgent,
     SystemAgent,
+    InfoCollectAgent,
 ]
 
 __all__ = [
     "CodeAgent", "ResearchAgent", "SecurityAgent",
-    "CreativeAgent", "DataAgent", "GameAgent", "SystemAgent",
+    "CreativeAgent", "DataAgent", "GameAgent",
+    "SystemAgent", "InfoCollectAgent",
     "ALL_AGENTS",
 ]

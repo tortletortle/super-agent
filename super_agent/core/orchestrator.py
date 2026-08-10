@@ -75,7 +75,8 @@ class SuperAgent:
         content = task.content.lower()
         keywords = {
             "code": ["写代码", "修复", "编程", "实现", "开发", "code", "bug", "重构"],
-            "research": ["搜索", "查询", "研究", "调研", "找", "research", "search"],
+            "research": ["搜索", "查询", "研究", "调研", "research", "search"],
+            "collect": ["收集", "采集", "抓取", "爬取", "信息", "数据", "collect", "scrape"],
             "security": ["漏洞", "扫描", "安全", "渗透", "注入", "security", "vuln"],
             "creative": ["设计", "创意", "文案", "写", "创作", "创意", "design"],
             "data": ["分析", "数据", "统计", "图表", "可视化", "data", "csv"],
