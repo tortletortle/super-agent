@@ -35,9 +35,11 @@ class SuperAgent:
         self.bus.subscribe("task_completed", self._on_task_completed)
 
     def get_agent(self, name: str) -> Optional[Agent]:
+        """根据名称获取已注册的 Agent"""
         return self._agents.get(name)
 
     def list_agents(self) -> list[str]:
+        """列出所有已注册的 Agent 名称"""
         return list(self._agents.keys())
 
     # ─── 任务执行 ───

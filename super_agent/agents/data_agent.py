@@ -19,6 +19,7 @@ class DataAgent(Agent):
     description = "数据分析、CSV处理、统计摘要、可视化"
 
     def run(self, task: Task) -> TaskResult:
+        """执行数据分析任务，路由到CSV加载/统计/可视化"""
         content = task.content
         c = content.lower()
 

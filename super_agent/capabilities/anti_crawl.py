@@ -69,7 +69,7 @@ class AntiCrawl:
                 page.goto(url, wait_until="networkidle")
                 return page.content()
         except ImportError:
-            pass
+            self._has_camoufox = False  # 隐身浏览器未安装，回退到 Playwright
         except Exception as e:
             return f"[反爬] 隐身浏览器失败: {e}"
 

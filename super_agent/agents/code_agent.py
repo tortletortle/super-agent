@@ -20,6 +20,7 @@ class CodeAgent(Agent):
     description = "代码生成、执行、分析、Bug 修复"
 
     def run(self, task: Task) -> TaskResult:
+        """执行任务入口，根据任务意图路由到写代码/执行/搜索/分析"""
         content = task.content
         c = content.lower()
 
@@ -223,8 +224,8 @@ class CodeAgent(Agent):
                 by_ext[ext] = by_ext.get(ext, 0) + 1
                 try:
                     total_lines += sum(1 for _ in open(f, errors="ignore"))
-                except:
-                    pass
+                except Exception:
+                    self._last_read_error = f  # 无法读取的文件跳过
             return TaskResult(
                 task_id="", agent_name=self.name,
                 output=f"📊 代码分析: {path}\n"

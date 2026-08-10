@@ -16,6 +16,7 @@ class CreativeAgent(Agent):
     description = "文案模板、文档生成、内容创作框架"
 
     def run(self, task: Task) -> TaskResult:
+        """执行创意任务，路由到README/PR/报告模板"""
         content = task.content
         c = content.lower()
 

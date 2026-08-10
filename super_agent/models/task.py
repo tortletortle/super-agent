@@ -30,4 +30,5 @@ class TaskResult:
     metadata: dict = field(default_factory=dict)
 
     def is_success(self):
+        """任务是否成功完成"""
         return self.status == "success"

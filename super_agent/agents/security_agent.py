@@ -37,6 +37,7 @@ class SecurityAgent(Agent):
     }
 
     def run(self, task: Task) -> TaskResult:
+        """执行安全任务，根据命令路由到对应扫描工具"""
         content = task.content
         c = content.lower()
         target = self._extract_target(content)

@@ -43,8 +43,8 @@ class Storage:
                 CREATE VIRTUAL TABLE IF NOT EXISTS content_fts
                 USING fts5(title, content, source, content=collected_data, content_rowid=id)
             """)
-        except:
-            pass  # FTS5 可能不可用
+        except Exception as _e:
+            self._fts_available = False
         conn.commit()
         conn.close()
 
@@ -68,8 +68,8 @@ class Storage:
                     (row_id, title, content[:50000], source)
                 )
                 conn.commit()
-            except:
-                pass
+            except Exception as _e:
+                self._fts_sync_ok = False
             conn.close()
             return {"id": row_id, "status": "saved"}
         except Exception as e:

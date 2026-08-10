@@ -149,8 +149,8 @@ class SearchDiscovery:
             result["ssl"] = "无法获取"
         try:
             result["whois"] = f"whois {domain} (需安装 whois 命令行)"  # 占位
-        except:
-            pass
+        except Exception as _e:
+            result["whois_error"] = str(_e)
         return result
 
     # ─── 用户名搜索 ───

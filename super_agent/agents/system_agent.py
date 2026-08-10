@@ -20,6 +20,7 @@ class SystemAgent(Agent):
     description = "系统运维：状态监控、进程管理、Docker、服务管理"
 
     def run(self, task: Task) -> TaskResult:
+        """执行系统运维任务，路由到系统/进程/Docker/服务操作"""
         content = task.content
         c = content.lower()
 

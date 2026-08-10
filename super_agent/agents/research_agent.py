@@ -21,6 +21,7 @@ class ResearchAgent(Agent):
         self.search = SearchDiscovery()
 
     def run(self, task: Task) -> TaskResult:
+        """执行研究任务，路由到搜索/用户名/子域名"""
         content = task.content
         c = content.lower()
 

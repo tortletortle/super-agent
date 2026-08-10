@@ -16,6 +16,7 @@ class GameAgent(Agent):
     description = "Three.js 游戏开发、3D 场景、HTML 游戏文件生成"
 
     def run(self, task: Task) -> TaskResult:
+        """执行游戏任务，路由到Three.js/跑酷/HTML模板"""
         content = task.content
         c = content.lower()
 
