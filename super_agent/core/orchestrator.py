@@ -74,18 +74,25 @@ class SuperAgent:
         """
         content = task.content.lower()
         keywords = {
-            "code": ["写代码", "修复", "编程", "实现", "开发", "code", "bug", "重构"],
+            "code": ["写代码", "修复", "编程", "实现", "开发", "code", "bug", "重构",
+                     "脚本", "函数", "class", "def ", "git"],
             "research": ["研究", "调研", "research"],
             "collect": ["搜索", "搜", "查询", "找", "收集", "采集", "抓取", "爬取",
                         "信息", "数据", "collect", "scrape", "search", "访问",
                         "打开", "http", "子域名", "用户名", "rss", "订阅",
                         "新闻", "视频", "监控", "定时", "保存", "存储", "导出",
                         "分析", "归类", "分类", "检索", "查询历史"],
-            "security": ["漏洞", "扫描", "安全", "渗透", "注入", "security", "vuln"],
-            "creative": ["设计", "创意", "文案", "写", "创作", "创意", "design"],
-            "data": ["分析", "数据", "统计", "图表", "可视化", "data", "csv"],
-            "game": ["游戏", "three.js", "3d", "game", "跑酷"],
-            "system": ["部署", "安装", "配置", "运维", "deploy", "docker"],
+            "security": ["漏洞", "扫描", "安全", "渗透", "注入", "security", "vuln",
+                        "nuclei", "nmap", "sqlmap", "hydra", "xss", "端口扫描"],
+            "creative": ["设计", "创意", "文案", "创作", "design", "readme",
+                        "模板", "报告", "pr说明", "pr 说明", "文档"],
+            "data": ["分析数据", "csv", "数据文件", "统计", "图表", "可视化",
+                    "dataframe", "data analysis"],
+            "game": ["游戏", "three.js", "3d", "game", "跑酷", "runner",
+                    "超休闲", "场景"],
+            "system": ["部署", "安装", "配置", "运维", "deploy", "docker",
+                      "系统", "进程", "磁盘", "内存", "cpu", "服务",
+                      "systemctl", "查看系统", "状态"],
         }
 
         sub_tasks = []
