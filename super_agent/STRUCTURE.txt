@@ -1,0 +1,23 @@
+super_agent/
+├── __init__.py
+├── core/
+│   ├── __init__.py
+│   ├── orchestrator.py      # SuperAgent 编排器
+│   ├── base_agent.py        # Agent 基类
+│   ├── message_bus.py       # 消息总线
+│   └── memory.py            # 共享记忆
+├── agents/
+│   ├── __init__.py
+│   ├── code_agent.py        编码 Agent
+│   ├── research_agent.py    研究 Agent
+│   ├── security_agent.py    安全 Agent
+│   ├── creative_agent.py    创意 Agent
+│   ├── data_agent.py        数据 Agent
+│   ├── game_agent.py        游戏 Agent
+│   └── system_agent.py      系统 Agent
+├── tools/
+│   ├── __init__.py
+│   └── tool_registry.py     工具注册表
+└── models/
+    ├── __init__.py
+    └── task.py              Task / TaskResult 模型

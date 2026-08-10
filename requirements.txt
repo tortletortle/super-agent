@@ -1,0 +1,15 @@
+# 依赖
+# 核心框架无外部依赖，运行时按需安装
+
+# 开发/测试
+pytest
+pytest-cov
+
+# 各 Agent 扩展（按需安装）
+# requests          # ResearchAgent 搜索
+# beautifulsoup4    # ResearchAgent 网页解析
+# numpy             # DataAgent
+# pandas            # DataAgent
+# matplotlib        # DataAgent 可视化
+# docker            # SystemAgent 容器管理
+# paramiko          # SystemAgent SSH

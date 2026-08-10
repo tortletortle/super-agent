@@ -1,0 +1,24 @@
+# Super Agent 超级智能体框架
+
+# 项目配置
+project:
+  name: "SuperAgent"
+  version: "0.1.0"
+  description: "模块化多智能体编排框架"
+
+# 编排器配置
+orchestrator:
+  max_parallel: 3
+  timeout: 300
+  decompose_strategy: "keyword"  # keyword | llm
+
+# LLM 配置（可选，用于 Agent 接入大模型）
+llm:
+  provider: ""      # 例如 openai, anthropic, custom
+  api_key: ""
+  model: ""
+
+# 日志
+logging:
+  level: "INFO"
+  file: "super_agent.log"
